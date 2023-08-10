@@ -1,8 +1,15 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Component, {PokemonContext} from "@/app/context";
+import {Button, Display} from "@/app/Components";
+import {getPokemon} from "@/app/fetcher";
 
-export default function Home() {
+export default async function Home() {
+  const initCounter  = 1
+  const initPokemon = await getPokemon(initCounter)
+
   return (
-      "Hello World"
+    <Component pokemon={initPokemon} counter={initCounter}>
+      <Button />
+      <Display />
+    </Component>
   )
 }
